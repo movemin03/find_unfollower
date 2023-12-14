@@ -44,11 +44,24 @@ def extract_and_move_json_files(zip_path, destination_folder):
 
 
 desktop = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
-print("Find your Unfollower\n")
+print("Find your Unfollower")
+print("언팔로워 찾기\n")
+
 print("Before Use this program, pleas download your date from official instagram")
-print("***You have to download json files not html****")
-print("***You don't have to extract your file. Just input zip file\n")
-zip_file_path = input("Enter the path to the zip file: ").replace('"', "")
+print("how to download data:")
+print("open instagram - settings and privacy - Accounts Center - Your information and permissions - download your information")
+print("- requests a download - select account - Select types... - select followers and follong - change format in to JSON and submit ")
+print("Refresh your menu. Normally, you can download data within 10 min. ")
+print("***You don't have to extract your file. Just input zip file which you download from Instagram\n")
+
+print("사용 전, 공식 인스타그램 접속하여 정보를 다운로드 받아주세요. 방법은 다음과 같습니다.")
+print("인스타 접속 - 설정 - 계정센터 - 내 정보 및 권한 - 내 정보 다운로드 - 다운로드 요청")
+print("- 언팔로워 확인할 계정 선택 - 정보 유형 선택 - 팔로워 및 팔로잉 선택- 형식을 JSON으로 변경 - 요청 제출")
+print("보통 10분 이내에 다운로드 버튼이 형성되니 다운로드 받아주시길 바랍니다. 나갔다가 해당 메뉴로 다시 들어와보면 생깁니다")
+print("***압축을 해제할 필요없습니다. 다운로드 받은 zip 파일 그대로 파일의 경로를 지정해주세요***\n")
+
+print("Enter the path to the zip file below")
+zip_file_path = input("경로를 넣어주세요: ").replace('"', "")
 
 # 함수를 호출하여 작업을 실행하고 결과를 변수에 저장
 followers_file, following_file = extract_and_move_json_files(zip_file_path, desktop)
