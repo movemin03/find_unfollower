@@ -77,6 +77,9 @@ def compare_json():
     # 팔로잉 목록에는 있지만 팔로워 목록에는 없는 값을 추려내기
     global unfollowers
     unfollowers = [user for user in following_list if user not in followers_list]
+    # 팔로잉 목록에는 있지만 팔로워 목록에는 없는 값을 추려내기
+    global not_followed
+    not_followed = [user for user in followers_list if user not in following_list]
 
 def compare_html():
     # 파일에서 데이터 로드
@@ -95,6 +98,9 @@ def compare_html():
     # 팔로잉 목록에는 있지만 팔로워 목록에는 없는 값을 추려내기
     global unfollowers
     unfollowers = [user for user in following_list if user not in followers_list]
+    # 팔로우 목록에는 있지만 팔로잉 목록에는 없는 값을 추려내기
+    global not_followed
+    not_followed = [user for user in followers_list if user not in following_list]
 
 desktop = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
 print("Find your Unfollower")
@@ -103,13 +109,13 @@ print("언팔로워 찾기\n")
 print("Before Use this program, pleas download your date from official instagram")
 print("how to download data:")
 print("open instagram - settings and privacy - Accounts Center - Your information and permissions - download your information")
-print("- requests a download - select account - Select types... - select followers and following - submit ")
+print("- requests a download - select account - Select types... - select followers and following - change data range into All time -  submit ")
 print("Refresh your menu. Normally, you can download data within 10 min. ")
 print("***You don't have to extract your file. Just input zip file which you download from Instagram\n")
 
 print("사용 전, 공식 인스타그램 접속하여 정보를 다운로드 받아주세요. 방법은 다음과 같습니다.")
 print("인스타 접속 - 설정 - 계정센터 - 내 정보 및 권한 - 내 정보 다운로드 - 다운로드 요청")
-print("- 언팔로워 확인할 계정 선택 - 정보 유형 선택 - 팔로워 및 팔로잉 선택 - 요청 제출")
+print("- 언팔로워 확인할 계정 선택 - 정보 유형 선택 - 팔로워 및 팔로잉 선택 - 기간을 전체기간 설정 - 요청 제출")
 print("보통 10분 이내에 다운로드 버튼이 형성되니 다운로드 받아주시길 바랍니다. 나갔다가 해당 메뉴로 다시 들어와보면 생깁니다")
 print("***압축을 해제할 필요없습니다. 다운로드 받은 zip 파일 그대로 파일의 경로를 지정해주세요***\n")
 
@@ -133,14 +139,20 @@ else:
         else:
             print("can't find html or json files. exit program")
             print("비교할 html 이나 json 파일을 발견하지 못했습니다. 프로그램을 종료합니다")
+            a = input("아무키나 입력하면 종료")
             exit()
 
-# 결과를 unfollowers.txt 파일로 저장
-unfollowers_file = os.path.join(desktop, "unfollowers.txt")  # 저장할 파일 경로
+# 결과를 파일로 저장
+unfollowers_file = os.path.join(desktop, "unfollowers.txt")
+not_followed_file = os.path.join(desktop, "not_followed.txt")
 
 with open(unfollowers_file, "w", encoding="utf-8") as f:
     for user in unfollowers:
         f.write(user + "\n")
+with open(not_followed_file, "w", encoding="utf-8") as f:
+    for user in not_followed:
+        f.write(user + "\n")
 
-print(f"\nWe save Unfollowers list to desktop/unfollowers.txt")
-print(f"언팔로우 한 사람들의 리스트를 바탕화면에 unfollowers.txt 이름으로 저장했습니다")
+print(f"\nWe save list to desktop in txt file")
+print(f"바탕화면에 unfollowers.txt 와  not_followed.txt 이름으로 저장했습니다")
+a = input("아무키나 입력하면 종료")
