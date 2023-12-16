@@ -5,7 +5,7 @@ import json
 from bs4 import BeautifulSoup
 
 def extract_and_move_json_files(zip_path, destination_folder):
-    # Zip 파일이 존재하는지 확인
+    # Zip 파일이 존재하는지 확인함
     if not os.path.isfile(zip_path):
         print(f"{zip_path} does not exist.")
         return None, None
